@@ -1,6 +1,6 @@
 # SMS Spam Detection — Backtracking, Multi-Model Machine Learning & LLM
 
-## 📌 Project Overview
+## Project Overview
 
 This project is an SMS Spam Detection system that classifies text messages into two categories:
 
@@ -11,7 +11,7 @@ The project extends a traditional SMS spam classifier by combining text preproce
 
 It also implements a hybrid ML-to-LLM cascade that uses machine learning for confident predictions and an LLM for uncertain cases.
 
-## 🎯 Objectives
+##  Objectives
 
 - Understand and explore SMS data using Basic Exploratory Data Analysis (EDA).
 - Clean and preprocess text messages.
@@ -24,7 +24,7 @@ It also implements a hybrid ML-to-LLM cascade that uses machine learning for con
 - Build a hybrid system to reduce unnecessary LLM API calls.
 - Save the trained model and experimental results for future use.
 
-## 📊 Dataset
+##  Dataset
 
 **Dataset:** SMS Spam Collection
 
@@ -46,7 +46,7 @@ The notebook supports CSV filenames such as `SMS.csv`, `sms.csv`, and `spam.csv`
 
 **Note:** The dataset is not included in this repository. Obtain the SMS Spam Collection dataset separately before running the notebook.
 
-## 🔎 1. Basic Exploratory Data Analysis (EDA)
+## 1. Basic Exploratory Data Analysis (EDA)
 
 EDA is performed to understand the dataset before training the models.
 
@@ -62,7 +62,7 @@ The project includes:
 
 These steps help identify class imbalance, common words, and differences between normal and spam messages.
 
-## 🧹 2. Text Preprocessing
+##  2. Text Preprocessing
 
 The project uses NLTK and regular expressions to prepare SMS messages for classification.
 
@@ -78,7 +78,7 @@ Preprocessing steps include:
 
 The cleaned text is stored in the `clean_message` column.
 
-## 🔢 3. TF-IDF Vectorization
+##  3. TF-IDF Vectorization
 
 TF-IDF (Term Frequency–Inverse Document Frequency) converts text into numerical features that machine learning algorithms can process.
 
@@ -93,7 +93,7 @@ Using unigrams and bigrams allows the model to learn from individual words and t
 
 For example, phrases such as "free entry" or "claim prize" can provide useful signals for spam detection.
 
-## 🧩 4. Handcrafted Feature Extraction
+##  4. Handcrafted Feature Extraction
 
 In addition to TF-IDF, the project extracts 12 manually designed features from each original SMS.
 
@@ -114,7 +114,7 @@ In addition to TF-IDF, the project extracts 12 manually designed features from e
 
 These features represent common patterns that may appear in spam messages.
 
-## 🌳 5. Backtracking Feature Selection
+##  5. Backtracking Feature Selection
 
 Backtracking is used to search for a useful subset of handcrafted features.
 
@@ -142,7 +142,7 @@ With 12 candidate features, there are 4,096 possible subsets. Limiting the subse
 
 The search reports the best subset, validation Spam F1-score, baseline score, recursion nodes, and search time.
 
-## ✂️ 6. Dataset Splitting
+##  6. Dataset Splitting
 
 The dataset is split into three parts using stratified sampling and a fixed random state.
 
@@ -156,7 +156,7 @@ The random state is set to `42` to make the split reproducible.
 
 The test set is intended for final evaluation rather than feature selection.
 
-## 🤖 7. Machine Learning Models
+##  7. Machine Learning Models
 
 The notebook compares eight classical machine learning approaches:
 
@@ -181,7 +181,7 @@ GridSearchCV with five-fold stratified cross-validation is used to tune three mo
 
 The tuned models are also included in the comparison.
 
-## 📈 8. Model Evaluation
+##  8. Model Evaluation
 
 The project evaluates classification performance using the following metrics:
 
@@ -202,7 +202,7 @@ The notebook also generates:
 
 The best model is selected using cross-validation results, and its test performance is reported separately.
 
-## 🔍 9. Interpretation and Error Analysis
+##  9. Interpretation and Error Analysis
 
 The project investigates why the classifier makes certain predictions.
 
@@ -219,7 +219,7 @@ The notebook examines:
 
 Reviewing these errors can reveal weaknesses in the classifier and help guide future improvements.
 
-## 💬 10. SMS Prediction Function
+##  10. SMS Prediction Function
 
 The notebook provides a `predict_sms()` function for classifying new messages using the selected machine learning model.
 
@@ -234,7 +234,7 @@ The function returns either `SPAM` or `HAM`.
 
 The notebook also demonstrates predictions on multiple example messages.
 
-## 🧠 11. LLM-Based Spam Detection
+##  11. LLM-Based Spam Detection
 
 The project optionally integrates Anthropic's Claude model for text classification.
 
@@ -266,7 +266,7 @@ The LLM section is optional. An Anthropic API key is required to run it, and API
 
 The notebook evaluates LLM approaches on a stratified sample of the test set. The sample size is controlled by `LLM_SAMPLE_SIZE`, which defaults to 300 messages.
 
-## 🔗 12. Hybrid ML-to-LLM Cascade
+##  12. Hybrid ML-to-LLM Cascade
 
 The hybrid system combines classical machine learning with few-shot LLM classification.
 
@@ -289,7 +289,7 @@ The notebook compares the following approaches on the same test sample:
 
 The comparison includes Accuracy, Precision, Recall, Spam F1-score, and the number of LLM calls.
 
-## 🆓 13. Optional Free Zero-Shot Transformer
+##  13. Optional Free Zero-Shot Transformer
 
 An optional Hugging Face zero-shot classification experiment is included.
 
@@ -305,7 +305,7 @@ RUN_HF_ZEROSHOT = False
 
 Change the setting to `True` to enable the experiment.
 
-## 💾 14. Saved Output Files
+##  14. Saved Output Files
 
 After the relevant notebook cells run successfully, the project saves the following artifacts:
 
@@ -319,7 +319,7 @@ These files can be downloaded from the Colab working directory and added to a Gi
 
 **Note:** The notebook's reported metrics are generated during execution. No accuracy or F1-score is assumed in this README.
 
-## 🛠️ Technologies Used
+##  Technologies Used
 
 - Python
 - Google Colab / Jupyter Notebook
@@ -336,7 +336,7 @@ These files can be downloaded from the Colab working directory and added to a Gi
 - Hugging Face Transformers (optional)
 - PyTorch (optional)
 
-## ▶️ How to Run the Project
+##  How to Run the Project
 
 ### Option 1: Google Colab
 
@@ -369,14 +369,14 @@ Open `SmS.ipynb`, provide the dataset, and run the cells in order.
 
 The notebook uses Google Colab-specific upload and secret-management features, so those sections may need adjustments when running locally.
 
-## 🔐 API Key Security
+##  API Key Security
 
 - Never upload your Anthropic API key to GitHub.
 - Use Colab Secrets or an environment variable named `ANTHROPIC_API_KEY`.
 - Do not commit passwords, tokens, or other private credentials.
 - If a key is accidentally published, revoke it and create a replacement.
 
-## ⚠️ Limitations
+## Limitations
 
 - Performance depends on the dataset, preprocessing, and model configuration.
 - Spam patterns change over time, so new messages may be misclassified.
@@ -386,7 +386,7 @@ The notebook uses Google Colab-specific upload and secret-management features, s
 - The optional Hugging Face transformer requires additional downloads and computational resources.
 - Classification results should be interpreted using multiple metrics rather than accuracy alone.
 
-## 🚀 Future Improvements
+## Future Improvements
 
 - Test the system on newer SMS and phishing datasets.
 - Add a simple web interface for real-time message classification.
@@ -396,7 +396,7 @@ The notebook uses Google Colab-specific upload and secret-management features, s
 - Compare inference speed and API cost across approaches.
 - Evaluate the model on a larger independent dataset.
 
-## 🏁 Conclusion
+##  Conclusion
 
 This project demonstrates an SMS spam detection workflow that combines text preprocessing, TF-IDF, handcrafted features, backtracking-based feature selection, classical machine learning, model evaluation, and optional LLM integration.
 
@@ -404,8 +404,3 @@ The hybrid cascade explores a practical way to combine fast local ML predictions
 
 The notebook generates the evaluation results when executed, allowing the performance of the different approaches to be compared using actual experimental data.
 
----
-
-**Project:** SMS Spam Detection — Backtracking + Multi-Model ML + LLM  
-**Language:** Python  
-**Environment:** Google Colab / Jupyter Notebook
